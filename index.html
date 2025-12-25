@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中医五输穴·智慧参考指南</title>
+    <title>中医五输穴四针补泻指南</title>
     
     <!-- 核心依赖 -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +47,6 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* 优化动画：结束后设为 none 避免干扰 fixed 定位 */
         .animate-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { 
             from { opacity: 0; transform: translateY(10px); } 
@@ -115,8 +113,15 @@
           yinyang: { label: "三阴三阳", order: ["手太阳小肠经", "手阳明大肠经", "手少阳三焦经", "足太阳膀胱经", "足阳明胃经", "足少阳胆经", "手太阴肺经", "手少阴心经", "手厥阴心包经", "足太阴脾经", "足少阴肾经", "足厥阴肝经"] }
         };
 
-        // --- 组件 ---
+        const Footer = () => (
+          <footer className="py-12 text-center text-stone-400 text-xs border-t border-stone-200 font-sans leading-relaxed">
+            <div>© 中医经典参考速查</div>
+            <div>作者：当归黄芪 版权所有 · 2025</div>
+            <div>sharpyu8@gmail.com</div>
+          </footer>
+        );
 
+        // --- 组件 ---
         const AcupointImage = ({ pointFullTitle }) => {
           const pointName = pointFullTitle.split('(')[0].trim();
           const pinyinName = ACUPOINT_PINYIN_MAP[pointName] || null;
@@ -207,7 +212,6 @@
             const theme = ELEMENT_THEMES[selectedMeridian.element];
             return (
               <div className="min-h-screen bg-stone-50 relative">
-                {/* 详情页导航 */}
                 <nav className="fixed top-0 left-0 right-0 z-[100] glass-morphism border-b border-stone-200 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
                    <button onClick={() => setSelectedMeridian(null)} className="flex items-center text-stone-600 hover:text-stone-900 transition-colors font-sans font-medium text-sm">
                       <svg className="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
@@ -217,8 +221,7 @@
                         {selectedMeridian.shortName} · {selectedMeridian.element}
                     </span>
                 </nav>
-                {/* 内容区域 */}
-                <div className="animate-in pt-24 md:pt-32 p-4 md:p-8 max-w-6xl mx-auto">
+                <div className="animate-in pt-32 md:pt-40 p-4 md:p-8 max-w-6xl mx-auto">
                   <header className="mb-10 text-center md:text-left">
                     <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight text-stone-900">{selectedMeridian.name}</h1>
                     <span className={`px-4 py-1.5 rounded-full text-xs font-bold border font-sans shadow-sm ${selectedType === 'supplement' ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-blue-50 text-blue-700 border-blue-200'}`}>
@@ -246,6 +249,7 @@
                       </div>
                     ))}
                   </div>
+                  <Footer />
                 </div>
               </div>
             );
@@ -253,12 +257,11 @@
 
           return (
             <div className="min-h-screen bg-stone-50 relative">
-              {/* 关键修复：将 ScrollGuide 置于 animate-in 容器之外，确保坐标系不被 transform 干扰 */}
               <ScrollGuide items={sortedMeridians} onScrollTo={handleScrollTo} />
               
               <div className="animate-in">
                 <div className="bg-stone-900 text-white py-20 px-4 text-center">
-                    <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-[0.3em]">五输穴</h1>
+                    <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-[0.1em] md:tracking-[0.3em]">中医五输穴四针补泻指南</h1>
                     <p className="text-stone-400 text-lg font-light italic">“井荥输经合，气血运行始”</p>
                 </div>
                 
@@ -301,7 +304,7 @@
                     })}
                   </div>
                 </main>
-                <footer className="py-12 text-center text-stone-400 text-xs border-t border-stone-200 font-sans">© 中医经典参考学习手册</footer>
+                <Footer />
               </div>
             </div>
           );
