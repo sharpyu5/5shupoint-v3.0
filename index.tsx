@@ -318,7 +318,7 @@ const App = () => {
       </main>
 
       <footer className="py-20 text-center text-stone-400 border-t border-stone-200 font-sans bg-stone-100/50">
-        <p className="text-sm font-medium">© 岐黄智慧 · 中医经典学习助手</p>
+        <p className="text-sm font-medium">© 中医经典学习助手</p>
         <div className="mt-4 text-[11px] space-y-2 opacity-60 px-6 max-w-2xl mx-auto leading-relaxed">
             <p>本指南仅供参考学习，具体临床应用请严格遵医嘱。</p>
             <p>基于五门补泻与子母补泻经典法则设计。</p>
