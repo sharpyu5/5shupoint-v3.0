@@ -29,9 +29,10 @@ const AcupointImage = ({ pointFullTitle }) => {
 
   useLayoutEffect(() => {
     if (!pinyinName) {
+      console.warn(`[DEBUG] 映射缺失: "${pointName}" 未在 ACUPOINT_PINYIN_MAP 中定义。请检查 constants.ts`);
       setStatus('error');
     }
-  }, [pinyinName]);
+  }, [pinyinName, pointName]);
 
   return (
     <div className="w-full aspect-square relative flex items-center justify-center bg-stone-50 overflow-hidden border-b border-stone-100 p-3 group">
@@ -56,7 +57,10 @@ const AcupointImage = ({ pointFullTitle }) => {
           src={localImgPath} 
           alt={pointName}
           onLoad={() => setStatus('success')}
-          onError={() => setStatus('error')}
+          onError={() => {
+            console.error(`[DEBUG] 加载失败: 无法找到文件 "images/${pinyinName}.jpg"`);
+            setStatus('error');
+          }}
           className={`w-[90%] h-[90%] object-cover rounded-xl shadow-inner transition-all duration-700 ${status === 'success' ? 'opacity-100 scale-100 group-hover:scale-110' : 'opacity-0 scale-95'}`}
         />
       )}

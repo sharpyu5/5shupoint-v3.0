@@ -1,17 +1,31 @@
-// 穴位中文名到拼音的映射表
+
+// 穴位中文名到拼音的映射表 (对应 images/ 文件夹下的 .jpg 文件)
+// 增加了简繁体兼容，确保无论数据源如何变化都能找到图片
 export const ACUPOINT_PINYIN_MAP = {
-  "太白": "taibai", "太渊": "taiyuan", "少府": "shaofu", "鱼际": "yuji",
-  "阴谷": "yingu", "尺泽": "chize", "足三里": "zusanli", "曲池": "quchi",
-  "阳谷": "yanggu", "阳溪": "yangxi", "足通谷": "zutonggu", "二间": "erjian",
-  "解溪": "jiexi", "足临泣": "zulinqi", "陷谷": "xiangu", "商阳": "shangyang",
-  "厉兑": "lidui", "大都": "dadu", "大敦": "dadun", "隐白": "yinbai",
-  "经渠": "jingqu", "商丘": "shangqiu", "少冲": "shaochong", "少海": "shaohai",
-  "神门": "shenmen", "后溪": "houxi", "前谷": "qiangu", "小海": "xiaohai",
-  "至阴": "zhiyin", "委中": "weizhong", "束骨": "shugu", "复溜": "fuliu",
-  "太溪": "taixi", "涌泉": "yongquan", "中冲": "zhongchong", "曲泽": "quze",
-  "曲澤": "quze", "大陵": "daling", "中渚": "zhongzhu", "液门": "yemen",
-  "天井": "tianjing", "侠溪": "xiaxi", "足窍阴": "zuqiaoyin", "阳辅": "yangfu",
-  "曲泉": "ququan", "中封": "zhongfeng", "行间": "xingjian"
+  // 肺经
+  "少商": "shaoshang", "鱼际": "yuji", "太渊": "taiyuan", "经渠": "jingqu", "尺泽": "chize", "尺澤": "chize",
+  // 大肠经
+  "商阳": "shangyang", "商陽": "shangyang", "二间": "erjian", "三间": "sanjian", "阳溪": "yangxi", "陽溪": "yangxi", "曲池": "quchi",
+  // 胃经
+  "厉兑": "lidui", "内庭": "neiting", "陷谷": "xiangu", "解溪": "jiexi", "解谿": "jiexi", "足三里": "zusanli",
+  // 脾经
+  "隐白": "yinbai", "大都": "dadu", "太白": "taibai", "商丘": "shangqiu", "阴陵泉": "yinlingquan", "阴陵": "yinlingquan",
+  // 心经
+  "少冲": "shaochong", "少沖": "shaochong", "少府": "shaofu", "神门": "shenmen", "灵道": "lingdao", "少海": "shaohai",
+  // 小肠经
+  "少泽": "shaoze", "少澤": "shaoze", "前谷": "qiangu", "后溪": "houxi", "阳谷": "yanggu", "陽谷": "yanggu", "小海": "xiaohai",
+  // 膀胱经
+  "至阴": "zhiyin", "至陰": "zhiyin", "足通谷": "zutonggu", "束骨": "shugu", "昆仑": "kunlun", "委中": "weizhong",
+  // 肾经
+  "涌泉": "yongquan", "然谷": "rangu", "太溪": "taixi", "太谿": "taixi", "复溜": "fuliu", "復溜": "fuliu", "阴谷": "yingu", "陰谷": "yingu",
+  // 心包经
+  "中冲": "zhongchong", "中沖": "zhongchong", "劳宫": "laogong", "大陵": "daling", "间使": "jianshi", "曲泽": "quze", "曲澤": "quze",
+  // 三焦经
+  "关冲": "guanchong", "液门": "yemen", "中渚": "zhongzhu", "支沟": "zhigou", "天井": "tianjing",
+  // 胆经
+  "足窍阴": "zuqiaoyin", "足竅陰": "zuqiaoyin", "侠溪": "xiaxi", "俠谿": "xiaxi", "足临泣": "zulinqi", "阳辅": "yangfu", "陽輔": "yangfu", "阳陵泉": "yanglingquan",
+  // 肝经
+  "大敦": "dadun", "行间": "xingjian", "太冲": "taichong", "中封": "zhongfeng", "曲泉": "ququan"
 };
 
 export const ELEMENT_THEMES = {
