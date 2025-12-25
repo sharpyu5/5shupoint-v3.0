@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,21 +7,29 @@
     <title>中医五输穴·智慧参考指南</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- 仅保留 Babel，用于在浏览器中解析 TSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script type="importmap">
+    
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
-    <script type="text/babel" data-type="module" src="index.tsx"></script>
+    <!-- 明确指定 presets 确保 Babel 能够处理 TypeScript 类型定义和 React 语法 -->
+    <script 
+        type="text/babel" 
+        data-type="module" 
+        data-presets="react,typescript" 
+        src="index.tsx"
+    ></script>
 </body>
 </html>
