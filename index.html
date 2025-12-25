@@ -7,7 +7,7 @@
     <title>中医五输穴·智慧参考指南</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 仅保留 Babel，用于在浏览器中解析 TSX -->
+    <!-- Babel Standalone: 用于在浏览器中实时解析 TSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <script type="importmap">
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="root"></div>
-    <!-- 明确指定 presets 确保 Babel 能够处理 TypeScript 类型定义和 React 语法 -->
+    <!-- 关键改动：EdgeOne 环境下，建议通过 Babel 处理所有模块导入 -->
     <script 
         type="text/babel" 
         data-type="module" 

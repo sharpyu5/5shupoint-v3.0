@@ -1,7 +1,8 @@
 
-// Import useState and useLayoutEffect for state management and layout control, and ReactDOM for rendering the application
+// Import hooks and components
 import { useState, useLayoutEffect, useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
+// 在浏览器 Babel 环境下，如果 constants.ts 在同一目录，直接引用文件名
 import { MERIDIAN_DATA, ACUPOINT_PINYIN_MAP, ELEMENT_THEMES } from './constants.ts';
 
 // Sorting Order Definitions
@@ -33,7 +34,7 @@ const AcupointImage = ({ pointFullTitle }) => {
   }, [pinyinName]);
 
   return (
-    <div className="w-full aspect-square relative flex items-center justify-center bg-stone-50 overflow-hidden border-b border-stone-100 p-3">
+    <div className="w-full aspect-square relative flex items-center justify-center bg-stone-50 overflow-hidden border-b border-stone-100 p-3 group">
       {/* Skeleton Loader */}
       {status === 'loading' && (
         <div className="absolute inset-0 bg-stone-100 animate-pulse flex flex-col items-center justify-center">
@@ -118,9 +119,8 @@ const App = () => {
   const [selectedMeridian, setSelectedMeridian] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [sortType, setSortType] = useState('circulation'); // 'circulation', 'name', 'yinyang'
+  const [sortType, setSortType] = useState('circulation'); 
 
-  // Memoized sorted list
   const sortedMeridians = useMemo(() => {
     const config = SORT_CONFIGS[sortType];
     return [...MERIDIAN_DATA].sort((a, b) => {
@@ -145,7 +145,7 @@ const App = () => {
   const handleScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Offset to avoid overlapping with fixed header/tabs
+      const offset = 80; 
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -169,7 +169,6 @@ const App = () => {
     
     return (
       <div className="min-h-screen bg-stone-50 animate-in">
-        {/* Fixed Header - Always visible at the top */}
         <nav className="fixed top-0 left-0 right-0 z-[100] glass-morphism border-b border-stone-200 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
            <button 
               onClick={goBack}
@@ -187,7 +186,6 @@ const App = () => {
             </div>
         </nav>
 
-        {/* Added top padding to account for fixed header */}
         <div className="pt-20 p-4 md:p-8 md:pt-24 max-w-6xl mx-auto">
           <header className="mb-10 text-center md:text-left">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight text-stone-900">{selectedMeridian.name}</h1>
@@ -237,12 +235,9 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-stone-50 animate-in relative">
-      {/* Scroll Guide - Automatically matches sorted items */}
       <ScrollGuide items={sortedMeridians} onScrollTo={handleScrollTo} />
 
-      {/* Hero Section */}
       <div className="bg-stone-900 text-white py-16 md:py-28 px-4 text-center relative overflow-hidden">
-        {/* Starry Decoration */}
         <StarryBackground />
         
         <div className="absolute inset-0 opacity-10 pointer-events-none flex items-center justify-center">
@@ -258,7 +253,6 @@ const App = () => {
         </div>
       </div>
 
-      {/* Custom Tabs for Sorting */}
       <div className="sticky top-0 z-[90] glass-morphism border-b border-stone-200 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 flex justify-center gap-2 md:gap-4 overflow-x-auto no-scrollbar">
           {Object.entries(SORT_CONFIGS).map(([key, config]) => (
@@ -327,13 +321,12 @@ const App = () => {
         <p className="text-sm font-medium">© 岐黄智慧 · 中医经典学习助手</p>
         <div className="mt-4 text-[11px] space-y-2 opacity-60 px-6 max-w-2xl mx-auto leading-relaxed">
             <p>本指南仅供参考学习，具体临床应用请严格遵医嘱。</p>
-            <p>基于四针补泻经典法则设计。</p>
+            <p>基于五门补泻与子母补泻经典法则设计。</p>
         </div>
       </footer>
     </div>
   );
 };
 
-// Use ReactDOM to create root and render the App component
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

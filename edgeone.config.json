@@ -1,0 +1,18 @@
+
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "name": "Correct MIME for TS/TSX",
+      "matches": [
+        { "type": "extension", "value": ["ts", "tsx"] }
+      ],
+      "actions": [
+        { "type": "modify-response-header", "action": "set", "name": "Content-Type", "value": "application/javascript" }
+      ]
+    }
+  ],
+  "host": {
+    "error_page": { "404": "/index.html" }
+  }
+}
